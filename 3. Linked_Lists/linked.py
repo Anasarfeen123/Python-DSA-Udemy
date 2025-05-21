@@ -103,6 +103,22 @@ class Linkedlist:
         self.length+=1
         return True
 
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+
+        if index == 0:
+            return self.pop_first()
+
+        if index == self.length - 1:
+            return self.pop()
+        
+        prev = self.get(index - 1)
+        req = prev.next
+        prev.next = req.next
+        req.next = None
+        self.length-=1
+        return req
 
 '''
 my_list = Linkedlist(10)
